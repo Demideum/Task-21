@@ -1,0 +1,48 @@
+namespace IJunior_Task21
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int rows;
+            int columns;
+            int minRandomNumber = 0;
+            int maxRandomNumber = 10;
+            int resultSumSecondRow = 0;
+            int resultMultiplicationFirstColumn = 1;
+
+            Console.Write("Ведите колличество строк в массиве: ");
+            rows = int.Parse(Console.ReadLine());
+
+            Console.Write("Ведите колличество столбцов в массиве: ");
+            columns = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+            int[,] array = new int[rows, columns];
+            Random random = new Random();
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    array[i, j] = random.Next(minRandomNumber, maxRandomNumber);
+
+                    Console.Write($"{ array[i, j]} ");
+
+                    if (i == 1)
+                    {
+                        resultSumSecondRow += array[i, j];
+                    }
+                    if (j == 0)
+                    {
+                        resultMultiplicationFirstColumn *= array[i, j];
+                    }
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine($"\n{resultSumSecondRow}  - сумма 2й строки.");
+
+            Console.WriteLine($"{resultMultiplicationFirstColumn}  - произведение 1го столбца.");
+        }
+    }
+}
