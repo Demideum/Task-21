@@ -16,6 +16,7 @@ namespace IJunior_Task21
 
             Console.Write("Ведите колличество столбцов в массиве: ");
             columns = int.Parse(Console.ReadLine());
+
             Console.WriteLine();
 
             int[,] array = new int[rows, columns];
@@ -28,7 +29,14 @@ namespace IJunior_Task21
                     array[i, j] = random.Next(minRandomNumber, maxRandomNumber);
 
                     Console.Write($"{ array[i, j]} ");
+                }
+                Console.WriteLine();
+            }
 
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
                     if (i == 1)
                     {
                         resultSumSecondRow += array[i, j];
@@ -38,7 +46,6 @@ namespace IJunior_Task21
                         resultMultiplicationFirstColumn *= array[i, j];
                     }
                 }
-                Console.WriteLine();
             }
             Console.WriteLine($"\n{resultSumSecondRow}  - сумма 2й строки.");
 
